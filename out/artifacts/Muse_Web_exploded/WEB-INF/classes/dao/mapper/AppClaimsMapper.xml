@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="dao.mapper.AppClaimsMapper">
+    <insert id="insert" parameterType="AppClaims" useGeneratedKeys="true" keyColumn="id">
+        insert into ifuture.app_claims (ord_id, gen_date, progress, data_url,usr_id)
+        VALUES (#{ordId}, #{genDate}, #{progress}, #{dataUrl},#{usrId});
+    </insert>
+
+    <update id="update" parameterType="AppClaims">
+        update ifuture.app_claims
+        set ord_id =#{ordId},gen_date=#{genDate},progress=#{progress},data_url=#{dataUrl}
+        where id = #{id}
+    </update>
+    <select id="getAppClaimById" parameterType="int" resultType="AppClaims">
+        select * from ifuture.app_claims where id = #{id}
+    </select>
+    <select id="getAppClaimByUsrId" parameterType="int" resultType="AppClaims">
+        select * from ifuture.app_claims where usr_id = #{usrId}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from ifuture.app_claims where id = #{id}
+    </delete>
+    <select id="getAllAppClaims" resultType="AppClaims">
+        select *
+        from ifuture.app_claims;
+    </select>
+
+</mapper>

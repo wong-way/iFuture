@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="dao.mapper.UserMapper">
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyColumn="id">
+        INSERT INTO ifuture.user (name, token, out_date, phone, gender)
+        VALUES (#{name}, #{token}, #{outDate}, #{phone}, #{gender});
+    </insert>
+
+    <update id="update" parameterType="User">
+        UPDATE ifuture.user
+        SET name = #{name}, token = #{token}, out_date = #{outDate}, phone = #{phone}, gender = #{gender}
+        WHERE id = #{id}
+    </update>
+
+    <select id="getUserById" parameterType="int" resultType="user">
+        select * from ifuture.user where id = #{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from ifuture.user where id = #{id}
+    </delete>
+
+</mapper>

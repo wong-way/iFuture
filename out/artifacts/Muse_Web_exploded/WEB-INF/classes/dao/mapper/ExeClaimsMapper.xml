@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="dao.mapper.ExeClaimsMapper">
+    <insert id="insert" parameterType="Execlaims" useGeneratedKeys="true" keyColumn="clm_id">
+        INSERT INTO ifuture.exe_claims(clm_id, gen_date, progress, to_off, has_off, usr_id)
+        VALUES (#{clmId},#{genDate},#{progress},#{toOff},#{hasOff},#{usrId});
+    </insert>
+
+    <update id="update" parameterType="Execlaims">
+        UPDATE ifuture.exe_claims
+        SET progress = #{progress}, to_off = #{toOff}, has_off = #{hasOff}
+        WHERE clm_id = #{clmId};
+    </update>
+
+    <select id="getClaimByUsrId" parameterType="int" resultType="ExeClaims">
+        select * from ifuture.exe_claims where usr_id = #{usrId}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from ifuture.exe_claims where clm_id = #{clmId}
+    </delete>
+
+</mapper>

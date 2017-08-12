@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="dao.mapper.AdminMapper">
+    <insert id="insert" parameterType="Admin" useGeneratedKeys="true" keyColumn="id">
+        INSERT INTO ifuture.admin (name,token,out_date,phone,gender,type,mail)
+        VALUES (#{name},#{token},#{outDate},#{phone},#{gender},#{type},#{mail})
+    </insert>
+
+    <update id="update" parameterType="Admin">
+        UPDATE ifuture.admin
+        SET name = #{name},token=#{token},out_date=#{outDate},phone=#{phone},gender=#{gender},type=#{type},mail=#{mail}
+        WHERE id = #{id}
+    </update>
+
+    <select id="getAdminById" parameterType="int" resultType="Admin">
+        select * from ifuture.admin where id = #{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from ifuture.admin where id = #{id}
+    </delete>
+
+</mapper>
