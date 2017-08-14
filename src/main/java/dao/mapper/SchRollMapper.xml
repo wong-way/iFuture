@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="dao.mapper.SchRollMapper">
+    <insert id="insert" parameterType="SchRoll" useGeneratedKeys="true" keyColumn="id">
+        insert into ifuture.sch_roll(usr_id, school, college, major, aim, mail, stu_no, id_no)
+        values (#{usrId},#{school},#{college},#{major},#{aim},#{mail},#{stuNo},#{idNo});
+    </insert>
+    <update id="update" parameterType="SchRoll">
+        UPDATE ifuture.sch_roll
+        SET school=#{school},college=#{college},major=#{major},aim=#{aim},mail=#{mail},stu_no=#{stuNo},id_no=#{idNo}
+        WHERE usr_id = #{usrId};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from ifuture.sch_roll where usr_id = #{usrId}
+    </delete>
+    <select id="getRollById" parameterType="int" resultType="SchRoll">
+        select * from ifuture.sch_roll where usr_id =#{usrId}
+    </select>
+</mapper>

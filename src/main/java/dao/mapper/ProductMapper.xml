@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="dao.mapper.ProductMapper">
+    <insert id="insert" parameterType="Product" useGeneratedKeys="true" keyColumn="id">
+        insert into ifuture.product(name, pay_mthd, pay_amnt, off_amnt, type, risk, caption)
+        values (#{name},#{payMthd},#{payAmnt},#{offAmnt},#{type},#{risk},#{caption});
+    </insert>
+    <update id="update" parameterType="Product">
+        UPDATE ifuture.product
+        SET name=#{name},pay_mthd=#{payMthd},pay_amnt=#{payAmnt},off_amnt=#{offAmnt},type=#{type},risk=#{risk},caption=#{caption}
+        WHERE id = #{id};
+    </update>
+
+    <select id="getAllProduct" resultType="Product">
+        select * from ifuture.product
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from ifuture.product where id = #{id}
+    </delete>
+    <select id="getProductById" parameterType="int" resultType="Product">
+        select * from ifuture.product where id =#{id}
+    </select>
+
+</mapper>
