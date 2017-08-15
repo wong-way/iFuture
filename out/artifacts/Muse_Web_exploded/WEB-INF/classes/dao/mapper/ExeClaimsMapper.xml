@@ -5,10 +5,9 @@
 
 <mapper  namespace="dao.mapper.ExeClaimsMapper">
     <insert id="insert" parameterType="Execlaims" useGeneratedKeys="true" keyColumn="clm_id">
-        INSERT INTO ifuture.exe_claims(clm_id, gen_date, progress, to_off, has_off, usr_id)
-        VALUES (#{clmId},#{genDate},#{progress},#{toOff},#{hasOff},#{usrId});
+       insert into ifuture.exe_claims(clm_id, gen_date, progress, to_off, has_off, usr_id)
+       values (#{clmId},#{genDate},#{progress},#{toOff},#{hasOff},#{usrId});
     </insert>
-
     <update id="update" parameterType="Execlaims">
         UPDATE ifuture.exe_claims
         SET progress = #{progress}, to_off = #{toOff}, has_off = #{hasOff}

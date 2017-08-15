@@ -1,12 +1,14 @@
 package dao.mapper;
 
 import dao.entity.TmpOrder;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by DELL on 2017-08-14.
  */
+@Component
 public interface TmpOrderMapper {
     void insert(TmpOrder order);
 

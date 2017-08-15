@@ -25,12 +25,12 @@
 
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybaits-config.xml"/>
-        <property name="typeAliasesPackage" value="dao.entity"/>
+        <property name="typeAliasesPackage" value="dao"/>
         <property name="mapperLocations" value="classpath:dao/mapper/*.xml"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="dao"/>
+        <property name="basePackage" value="dao.mapper"/>
     </bean>
 </beans>

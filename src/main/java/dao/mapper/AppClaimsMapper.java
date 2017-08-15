@@ -1,12 +1,14 @@
 package dao.mapper;
 
 import dao.entity.AppClaims;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by DELL on 2017-08-11.
  */
+@Component
 public interface AppClaimsMapper {
     public void insert(AppClaims appClaims);
 

@@ -14,6 +14,7 @@ import java.sql.Date;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:spring-mybaits.xml"})
 public class ExeClaimsTest {
+
     @Autowired
     private ExeClaimsMapper mapper;
     @Test

@@ -15,11 +15,14 @@
         WHERE id = #{id}
     </update>
 
-    <select id="getUserById" parameterType="int" resultType="user">
+    <select id="getUserById" parameterType="int" resultType="User">
         select * from ifuture.user where id = #{id}
     </select>
     <delete id="delete" parameterType="int">
         delete from ifuture.user where id = #{id}
     </delete>
+    <select id="getAllUser" resultType="User">
+        select * from ifuture.user
+    </select>
 
 </mapper>
