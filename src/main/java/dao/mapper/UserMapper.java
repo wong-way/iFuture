@@ -10,15 +10,16 @@ import java.util.List;
  */
 @Component
 public interface UserMapper {
+    User getUserById(int id);
 
-    public User getUserById(int id);
+    void insert(User user);
 
-    public void insert(User user);
+    void delete(int id);
 
-    public void delete(int id);
+    void update(User user);
 
-    public void update(User user);
+    List<User> getAllUser();
 
-    public List<User> getAllUser();
+    User getUserByName(String name);
 
 }

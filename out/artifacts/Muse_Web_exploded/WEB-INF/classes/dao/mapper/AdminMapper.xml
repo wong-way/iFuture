@@ -5,13 +5,13 @@
 
 <mapper  namespace="dao.mapper.AdminMapper">
     <insert id="insert" parameterType="Admin" useGeneratedKeys="true" keyColumn="id">
-        INSERT INTO ifuture.admin (name,token,out_date,phone,gender,type,mail)
-        VALUES (#{name},#{token},#{outDate},#{phone},#{gender},#{type},#{mail})
+        INSERT INTO ifuture.admin (name,token,out_date,phone,gender,type,mail,psw)
+        VALUES (#{name},#{token},#{outDate},#{phone},#{gender},#{type},#{mail},#{psw})
     </insert>
 
     <update id="update" parameterType="Admin">
         UPDATE ifuture.admin
-        SET name = #{name},token=#{token},out_date=#{outDate},phone=#{phone},gender=#{gender},type=#{type},mail=#{mail}
+        SET name = #{name},token=#{token},out_date=#{outDate},phone=#{phone},gender=#{gender},type=#{type},mail=#{mail},psw=#{psw}
         WHERE id = #{id}
     </update>
 

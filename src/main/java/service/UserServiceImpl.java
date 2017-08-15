@@ -32,5 +32,34 @@ public class UserServiceImpl implements UserService{
         return usrList;
 
     }
+
+    public User getUserByName(String name) {
+
+        User user = null;
+        try{
+            user = mapper.getUserByName(name);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public int login(String name, String psw) {
+        User user = null;
+
+        try{
+            user = mapper.getUserByName(name);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if (user == null) {
+            return 1;
+        }
+        if (user.getPsw().equals(psw)) {
+            return 2;
+        }return 1;
+    }
+
     //TODO 其他业务逻辑
 }

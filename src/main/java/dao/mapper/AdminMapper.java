@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface AdminMapper {
-    public void insert(Admin admin);
+    void insert(Admin admin);
 
-    public void delete(int id);
+    void delete(int id);
 
-    public void update(Admin admin);
+    void update(Admin admin);
 
-    public Admin getAdminById(int id);
+    Admin getAdminById(int id);
 
 }

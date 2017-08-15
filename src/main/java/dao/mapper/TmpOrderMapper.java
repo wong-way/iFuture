@@ -18,5 +18,7 @@ public interface TmpOrderMapper {
 
     List<TmpOrder> getOrderByUsrId(int usrId);
 
+    TmpOrder get(int id);
+
 
 }

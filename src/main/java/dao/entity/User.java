@@ -12,6 +12,8 @@ public class User {
 
     private int id;
 
+    private String psw;
+
     private String name;
 
     private String token;
@@ -25,8 +27,9 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String token, Date outDate, String phone, int gender) {
+    public User(int id, String psw, String name, String token, Date outDate, String phone, int gender) {
         this.id = id;
+        this.psw = psw;
         this.name = name;
         this.token = token;
         this.outDate = outDate;
@@ -80,5 +83,13 @@ public class User {
 
     public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public String getPsw() {
+        return psw;
+    }
+
+    public void setPsw(String psw) {
+        this.psw = psw;
     }
 }

@@ -22,4 +22,5 @@
         delete from ifuture.tmp_order where usr_id = #{usrId}
     </delete>
 
+
 </mapper>

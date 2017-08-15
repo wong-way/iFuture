@@ -35,6 +35,7 @@ public class UserTest {
         user.setName("Green");
         user.setPhone("18900000002");
         user.setGender(1);
+        user.setPsw("123456");
         userMapper.insert(user);
     }
     @Test
@@ -44,11 +45,18 @@ public class UserTest {
         user.setName("Mozart");
         user.setPhone("18900000002");
         user.setGender(1);
+        user.setPsw("123456");
         userMapper.update(user);
     }
     @Test
     public void testDeleteUser() throws Exception{
         userMapper.delete(2);
+    }
+
+    @Test
+    public void testGetUserByName() {
+        User user=userMapper.getUserByName("Mozart");
+        System.out.println(user.getName());
     }
 
 

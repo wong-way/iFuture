@@ -5,13 +5,13 @@
 
 <mapper  namespace="dao.mapper.UserMapper">
     <insert id="insert" parameterType="User" useGeneratedKeys="true" keyColumn="id">
-        INSERT INTO ifuture.user (name, token, out_date, phone, gender)
-        VALUES (#{name}, #{token}, #{outDate}, #{phone}, #{gender});
+        INSERT INTO ifuture.user(name, token, out_date, phone, gender, psw)
+        VALUES (#{name}, #{token}, #{outDate}, #{phone}, #{gender},#{psw});
     </insert>
 
     <update id="update" parameterType="User">
         UPDATE ifuture.user
-        SET name = #{name}, token = #{token}, out_date = #{outDate}, phone = #{phone}, gender = #{gender}
+        SET name = #{name}, token = #{token}, out_date = #{outDate}, phone = #{phone}, gender = #{gender},psw=#{psw}
         WHERE id = #{id}
     </update>
 
@@ -21,8 +21,13 @@
     <delete id="delete" parameterType="int">
         delete from ifuture.user where id = #{id}
     </delete>
+
     <select id="getAllUser" resultType="User">
         select * from ifuture.user
     </select>
+    <select id="getUserByName" resultType="User" parameterType="String">
+        select * from ifuture.user where name =#{name}
+    </select>
+
 
 </mapper>
