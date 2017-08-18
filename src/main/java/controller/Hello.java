@@ -50,11 +50,11 @@ public class Hello {
             Info info = new Info(1, "查找成功");
             list = service.getAllUser();
             System.out.println(list.size());
-            Response<List<User>> response = new Response(info, list);
+            Response response = new Response(info, list);
             return response;
         } catch (Exception e) {
             Info info = new Info(1, "查找失败");
-            Response<List<User>> response = new Response(info, list);
+            Response response = new Response(info, list);
             e.printStackTrace();
             return response;
         }
@@ -62,10 +62,10 @@ public class Hello {
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Response login(String id, String psw) {
-        if (id.equals("admin") && psw.equals("123456")) {
+    public Response login(String name, String psw) {
+        if (name.equals("admin") && psw.equals("123456")) {
             Info info = new Info(1, "登录成功");
-            Response<String> response = new Response(info, id + psw);
+            Response<String> response = new Response(info, name + psw);
             return response;
         } else {
             Info info = new Info(1, "登录失败");

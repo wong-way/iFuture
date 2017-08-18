@@ -3,12 +3,14 @@ package service;
 import dao.entity.User;
 import dao.mapper.UserMapper;
 import dto.Token;
+import dto.UserInfo;
+import dto.response.Info;
+import dto.response.Response;
 import helper.DateHelper;
 import helper.constant.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,40 +50,64 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
-    public int login(String name, String psw) {
+    public Response login(String name, String psw) {
         User user = null;
+        Response response = new Response();
         try{
             user = mapper.getUserByName(name);
         }catch (Exception e){
             e.printStackTrace();
         }
         if (user == null) {
-            return Constant.USER_NOT_EXIST;
+            Info info = new Info(Constant.USER_NOT_EXIST, "用户不存在，请注册");
+            response.setInfo(info);
         }
         if (user.getPsw().equals(psw)) {
-            user.setToken(new Token().getTokenStr());
+            String tokenStr =new Token().getTokenStr();
+            user.setToken(tokenStr);
             user.setOutDate(DateHelper.getOutDate(10));
             mapper.update(user);
-            return Constant.LOGIN_SUCCESS;
 
-        }return Constant.WRONG_PASSWORD;
+            Info info = new Info(Constant.LOGIN_SUCCESS, "登录成功");
+            int usrId = user.getId();
+            UserInfo userInfo = new UserInfo(tokenStr, usrId);
+            response.setInfo(info);
+            response.setData(userInfo);
+
+        }else{
+            Info info = new Info(Constant.WRONG_PASSWORD, "密码错误，请重新登录");
+            response.setInfo(info);
+        }
+        return  response;
     }
 
 
-    public int register(User user) {
+    public Response register(User user) {
+        Response response = new Response();
         if (mapper.getUserByName(user.getName()) != null) {
-            return Constant.REGISTERED_REPEAT;
+            Info info = new Info(Constant.REGISTERED_REPEAT, "用户已注册，请直接登录");
+            response.setInfo(info);
+            return response;
         }
-        try{
+        try {
             Token token = new Token();
             user.setToken(token.getTokenStr());
             user.setOutDate(DateHelper.getOutDate(10));
             mapper.insert(user);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            return Constant.REGISTER_FAILED;
+            Info info = new Info(Constant.REGISTER_FAILED, "注册失败，请稍后重试");
+            response.setInfo(info);
+            return response;
         }
-        return Constant.REGISTER_SUCCESS;
+        Info info = new Info(Constant.REGISTER_SUCCESS, "注册成功");
+        User tmpUser = mapper.getUserByName(user.getName());
+        String tokenStr = tmpUser.getToken();
+        int usrId = user.getId();
+        UserInfo userInfo = new UserInfo(tokenStr, usrId);
+        response.setInfo(info);
+        response.setData(userInfo);
+        return response;
     }
     //TODO 其他业务逻辑
 }
