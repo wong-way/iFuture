@@ -17,4 +17,6 @@ public interface UserService {
     User getUserByName(String name);
 
     List<User> getAllUser();
+    public int login(String name, String psw);
+    public int register(User user);
 }

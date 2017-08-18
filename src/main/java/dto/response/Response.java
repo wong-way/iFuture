@@ -12,6 +12,9 @@ public class Response<Obj>{
         this.data = data;
     }
 
+    public Response() {
+    }
+
     public Info getInfo() {
         return info;
     }

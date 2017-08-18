@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Created by Jaho on 2017/5/8.
  */
+
 @Component
 public interface UserMapper {
     User getUserById(int id);
