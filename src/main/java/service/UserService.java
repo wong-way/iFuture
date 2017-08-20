@@ -18,6 +18,6 @@ public interface UserService {
     User getUserByName(String name);
 
     List<User> getAllUser();
-    public Response login(String name, String psw);
-    public Response register(User user);
+    Response login(String name, String psw);
+    Response register(User user);
 }

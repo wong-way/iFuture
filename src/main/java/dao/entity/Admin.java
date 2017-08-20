@@ -16,11 +16,12 @@ public class Admin {
     private int gender;
     private int type;
     private String mail;
+    private String psw;
 
     public Admin() {
     }
 
-    public Admin(int id, String name, String token, Date outDate, String phone, int gender, int type, String mail) {
+    public Admin(int id, String name, String token, Date outDate, String phone, int gender, int type, String mail,String psw) {
         this.id = id;
         this.name = name;
         this.token = token;
@@ -29,6 +30,7 @@ public class Admin {
         this.gender = gender;
         this.type = type;
         this.mail = mail;
+        this.psw = psw;
     }
 
     public int getId() {
@@ -95,5 +97,11 @@ public class Admin {
         this.mail = mail;
     }
 
+    public String getPsw() {
+        return psw;
+    }
 
+    public void setPsw(String psw) {
+        this.psw = psw;
+    }
 }

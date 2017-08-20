@@ -42,7 +42,7 @@ public class AdminTest {
     }
     @Test
     public void testGet(){
-        Admin a =mapper.getAdminById(1);
+        Admin a =mapper.getAdminByName("Hway");
         System.out.println(a.getName());
     }
 

@@ -22,8 +22,7 @@ public class SignController {
     @RequestMapping(value = "user/register", method = RequestMethod.POST)
     public Response register(@RequestParam String name, @RequestParam String phone,
                              @RequestParam Integer gender, @RequestParam String psw) {
-        Response response = new Response();
-        int result;
+        Response response ;
         User user = new User();
         user.setName(name);
         user.setPhone(phone);

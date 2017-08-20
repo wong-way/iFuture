@@ -16,4 +16,5 @@ public interface AdminMapper {
 
     Admin getAdminById(int id);
 
+    Admin getAdminByName(String name);
 }

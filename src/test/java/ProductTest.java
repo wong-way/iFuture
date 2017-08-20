@@ -59,5 +59,13 @@ public class ProductTest {
     public void testDelete(){
         mapper.delete(2);
     }
+    @Test
+    public void testGetFail(){
+        Product p = mapper.getProductById(2);
+        if (p == null) {
+            System.out.println("不存在");
+        }
+    }
+
 
 }

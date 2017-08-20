@@ -21,5 +21,8 @@
     <delete id="delete" parameterType="int">
         delete from ifuture.admin where id = #{id}
     </delete>
+    <select id="getAdminByName" parameterType="String" resultType="Admin">
+        select * from ifuture.admin where name = #{name}
+    </select>
 
 </mapper>

@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService{
             user.setOutDate(DateHelper.getOutDate(10));
             mapper.update(user);
 
-            Info info = new Info(Constant.LOGIN_SUCCESS, "登录成功");
+            Info info = new Info(Constant.LOGIN_SUCCESS, "用户登录成功");
             int usrId = user.getId();
             UserInfo userInfo = new UserInfo(tokenStr, usrId);
             response.setInfo(info);
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService{
     public Response register(User user) {
         Response response = new Response();
         if (mapper.getUserByName(user.getName()) != null) {
-            Info info = new Info(Constant.REGISTERED_REPEAT, "用户已注册，请直接登录");
+            Info info = new Info(Constant.USER_REGISTERED_REPEAT, "用户已注册，请直接登录");
             response.setInfo(info);
             return response;
         }
@@ -96,11 +96,11 @@ public class UserServiceImpl implements UserService{
             mapper.insert(user);
         } catch (Exception e) {
             e.printStackTrace();
-            Info info = new Info(Constant.REGISTER_FAILED, "注册失败，请稍后重试");
+            Info info = new Info(Constant.USER_REGISTER_FAILED, "注册失败，请稍后重试");
             response.setInfo(info);
             return response;
         }
-        Info info = new Info(Constant.REGISTER_SUCCESS, "注册成功");
+        Info info = new Info(Constant.USER_REGISTER_SUCCESS, "注册成功");
         User tmpUser = mapper.getUserByName(user.getName());
         String tokenStr = tmpUser.getToken();
         int usrId = user.getId();
