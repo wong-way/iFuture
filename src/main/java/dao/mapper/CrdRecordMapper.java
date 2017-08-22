@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface CrdRecordMapper {
-    public void insert(CrdRecord record);
+    void insert(CrdRecord record);
 
-    public void update(CrdRecord record);
+    void update(CrdRecord record);
 
-    public void delete(int id);
+    void delete(int id);
 
-    public CrdRecord getUsrRecord(int usrId);
+    CrdRecord getUsrRecord(int usrId);
 
 }
