@@ -13,14 +13,16 @@ public class TmpOrder {
     private int progress;
     private Date genDate;
     private String dataUrl;
+    private boolean isPayed;
 
-    public TmpOrder(int id, int usrId, int proId, int progress, Date genDate, String dataUrl) {
+    public TmpOrder(int id, int usrId, int proId, int progress, Date genDate, String dataUrl, boolean isPayed) {
         this.id = id;
         this.usrId = usrId;
         this.proId = proId;
         this.progress = progress;
         this.genDate = genDate;
         this.dataUrl = dataUrl;
+        this.isPayed = isPayed;
     }
 
     public TmpOrder() {
@@ -72,5 +74,13 @@ public class TmpOrder {
 
     public void setDataUrl(String dataUrl) {
         this.dataUrl = dataUrl;
+    }
+
+    public boolean isPayed() {
+        return isPayed;
+    }
+
+    public void setPayed(boolean payed) {
+        isPayed = payed;
     }
 }

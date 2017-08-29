@@ -21,6 +21,9 @@
     <delete id="delete" parameterType="int">
         delete from ifuture.tmp_order where usr_id = #{usrId}
     </delete>
+    <select id="getAll" resultType="TmpOrder">
+        select *from ifuture.tmp_order
+    </select>
 
 
 </mapper>

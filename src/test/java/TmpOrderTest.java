@@ -24,6 +24,7 @@ public class TmpOrderTest {
         TmpOrder order = new TmpOrder();
         order.setUsrId(1001);
         order.setProId(1);
+        order.setPayed(true);
         order.setProgress(2);
         java.util.Date date=new java.util.Date();
         order.setGenDate(new Date(date.getTime()));
@@ -55,5 +56,14 @@ public class TmpOrderTest {
     public void testDelete(){
         mapper.delete(1001);
     }
+    @Test
+    public void testGet(){
+        TmpOrder order = mapper.get(1);
+
+        if(order.isPayed()){
+            System.out.println("yes");
+        }
+    }
+
 
 }

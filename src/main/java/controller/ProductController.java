@@ -19,7 +19,6 @@ public class ProductController {
     @Autowired
     ProductService service;
     @RequestMapping(value = "product/getAll", method = RequestMethod.GET)
-
     public Response getAllProduct(){
         Response response = service.getAllProduct();
         return response;

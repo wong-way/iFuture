@@ -18,4 +18,6 @@ public interface VldOrderMapper {
 
     List<VldOrder> getOrderByUsrId(int usrId);
 
+    VldOrder getOrder(int ordId);
+
 }

@@ -21,5 +21,9 @@
     <delete id="delete" parameterType="int">
         delete from ifuture.vld_order where ord_id = #{ordId}
     </delete>
+    <select id="getOrder" parameterType="int" resultType="VldOrder">
+        select * from ifuture.vld_order where ord_id = #{ordId};
+
+    </select>
 
 </mapper>

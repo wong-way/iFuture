@@ -80,7 +80,7 @@ public class CrdRecordServiceImpl implements CrdRecordService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.setInfo(new Info(Constant.RECORD_GET_SUCCESS, "获取用户信用分数异常，请稍后再试"));
+            response.setInfo(new Info(Constant.RECORD_GET_ERROR, "获取用户信用分数异常，请稍后再试"));
         }
         return response;
     }
