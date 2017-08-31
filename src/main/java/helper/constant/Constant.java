@@ -52,7 +52,6 @@ public class Constant {
    public final static int TMPORDER_UPDATE_ERROR =1;
    public final static int TMPORDER_DELETE_SUCCESS =0;
    public final static int TMPORDER_DELETE_ERROR =1;
-   public final static int TMPORDER_NOT_EXIST =-1;
    public final static int TMPORDER_GET_SUCCESS=0;
    public final static int TMPORDER_GET_ERROR=1;
 
@@ -62,7 +61,10 @@ public class Constant {
    public final static int VLDORDER_DELETE_ERROR=1;
    public final static int VLDORDER_UPDATE_SUCCESS = 0;
    public final static int VLDORDER_UPDATE_ERROR=1;
-   public final static int VLDORDER_NOT_EXIST=-1;
    public final static int MONEY_NOT_PAYED =2;
+   public final static int VLDORDER_GET_SUCCESS=0;
+   public final static int VLDORDER_GET_ERROR=1;
+
+    public final static int ORDER_NOT_EXIST=-1;
 
 }

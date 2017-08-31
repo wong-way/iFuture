@@ -1,5 +1,6 @@
 package service;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import dao.entity.CrdRecord;
 import dao.entity.TmpOrder;
 import dao.entity.VldOrder;
@@ -9,6 +10,10 @@ import dto.response.Response;
 import helper.constant.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderSerivce {
@@ -54,7 +59,7 @@ public class OrderServiceImpl implements OrderSerivce {
         Response response = new Response();
         try {
             if (tmpMapper.get(order.getProId()) == null) {
-                response.setInfo(new Info(Constant.TMPORDER_NOT_EXIST, "临时订单不存在"));
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
                 return response;
             }
             tmpMapper.update(order);
@@ -72,7 +77,7 @@ public class OrderServiceImpl implements OrderSerivce {
         Response response = new Response();
         try {
             if (tmpMapper.get(id) == null) {
-                response.setInfo(new Info(Constant.TMPORDER_NOT_EXIST,"临时订单不存在"));
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST,"没有查到相关订单"));
                 return response;
             }
             tmpMapper.delete(id);
@@ -91,7 +96,7 @@ public class OrderServiceImpl implements OrderSerivce {
         Response response = new Response();
         try {
             if (tmpMapper.get(id) == null) {
-                response.setInfo(new Info(Constant.TMPORDER_NOT_EXIST, "临时订单不存在"));
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
                 return response;
             }
             response.setData(tmpMapper.get(id));
@@ -107,7 +112,7 @@ public class OrderServiceImpl implements OrderSerivce {
     public Response getAllTmporder() {
         Response response = new Response();
         try {
-            response.setData(tmpMapper.getAll());
+            response.setData(tmpMapper.getAllOrder());
             response.setInfo(new Info(Constant.TMPORDER_GET_SUCCESS,"获取订单成功"));
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,7 +125,7 @@ public class OrderServiceImpl implements OrderSerivce {
         Response response = new Response();
         try {
             if (tmpMapper.get(order.getOrdId()) == null) {
-                response.setInfo(new Info(Constant.TMPORDER_NOT_EXIST,"不存在该笔订单"));
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST,"没有查到相关订单"));
                 return response;
             }
             if (!tmpMapper.get(order.getOrdId()).isPayed()) {
@@ -128,7 +133,7 @@ public class OrderServiceImpl implements OrderSerivce {
                 return response;
             }
             if (userMapper.getUserById(order.getUsrId()) == null) {
-                response.setInfo(new Info(Constant.USER_NOT_EXIST,"用户不存在"));
+                response.setInfo(new Info(Constant.USER_NOT_EXIST,"没有查到相关订单"));
                 return response;
             }
             vldMapper.insert(order);
@@ -147,7 +152,7 @@ public class OrderServiceImpl implements OrderSerivce {
         Response response = new Response();
         try {
             if (vldMapper.getOrder(ordId) == null) {
-                response.setInfo(new Info(Constant.VLDORDER_NOT_EXIST, "订单不存在"));
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
                 return response;
             }
             vldMapper.delete(ordId);
@@ -164,10 +169,16 @@ public class OrderServiceImpl implements OrderSerivce {
     public Response getVldorder(int ordId) {
         Response response = new Response();
         try {
-
-
+            VldOrder order = vldMapper.getOrder(ordId);
+            if (order == null) {
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
+                return response;
+            }
+            response.setData(order);
+            response.setInfo(new Info(Constant.VLDORDER_GET_SUCCESS,"订单获取成功"));
         } catch (Exception e) {
             e.printStackTrace();
+            response.setInfo(new Info(Constant.VLDORDER_GET_ERROR, "订单获取异常，请稍后重试"));
         }
 
         return response;
@@ -176,10 +187,13 @@ public class OrderServiceImpl implements OrderSerivce {
     public Response getAllVldOrder() {
         Response response = new Response();
         try {
-
+            List<VldOrder> list = vldMapper.getAllOrder();
+            response.setData(list);
+            response.setInfo(new Info(Constant.VLDORDER_GET_SUCCESS, "订单获取成功"));
 
         } catch (Exception e) {
             e.printStackTrace();
+            response.setInfo(new Info(Constant.VLDORDER_GET_ERROR, "订单获取异常，请稍后重试"));
         }
 
         return response;
@@ -188,9 +202,20 @@ public class OrderServiceImpl implements OrderSerivce {
     public Response getUserOrder(int usrId) {
         Response response = new Response();
         try {
-
+            Map<String,List> map= new HashMap<String, List>();
+            List<VldOrder> vldList = vldMapper.getAllOrder();
+            List<TmpOrder> tmpList = tmpMapper.getAllOrder();
+            if (vldList.size() + tmpList.size() == 0) {
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST,"没有查到相关订单"));
+                return response;
+            }
+            map.put("临时订单", vldList);
+            map.put("正式订单", tmpList);
+            response.setInfo(new Info(Constant.VLDORDER_GET_SUCCESS,"订单获取成功"));
+            response.setData(map);
 
         } catch (Exception e) {
+            response.setInfo(new Info(Constant.VLDORDER_GET_ERROR,"订单获取异常，请稍后重试"));
             e.printStackTrace();
         }
 

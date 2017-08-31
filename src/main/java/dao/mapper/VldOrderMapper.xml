@@ -23,7 +23,8 @@
     </delete>
     <select id="getOrder" parameterType="int" resultType="VldOrder">
         select * from ifuture.vld_order where ord_id = #{ordId};
-
     </select>
-
+    <select id="getAllOrder" resultType="VldOrder">
+        select * from ifuture.vld_order
+    </select>
 </mapper>

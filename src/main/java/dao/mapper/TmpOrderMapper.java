@@ -20,7 +20,7 @@ public interface TmpOrderMapper {
 
     TmpOrder get(int id);
 
-    List<TmpOrder> getAll();
+    List<TmpOrder> getAllOrder();
 
 
 }
