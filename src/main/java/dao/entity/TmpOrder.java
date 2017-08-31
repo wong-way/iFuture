@@ -15,8 +15,8 @@ public class TmpOrder {
     private String dataUrl;
     private boolean isPayed;
 
-    public TmpOrder(int id, int usrId, int proId, int progress, Date genDate, String dataUrl, boolean isPayed) {
-        this.id = id;
+    public TmpOrder( int usrId, int proId, int progress, Date genDate, String dataUrl, boolean isPayed) {
+
         this.usrId = usrId;
         this.proId = proId;
         this.progress = progress;

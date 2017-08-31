@@ -5,6 +5,7 @@ import dao.entity.CrdRecord;
 import dao.entity.TmpOrder;
 import dao.entity.VldOrder;
 import dao.mapper.*;
+import dto.OrderInfo;
 import dto.response.Info;
 import dto.response.Response;
 import helper.constant.Constant;
@@ -30,9 +31,10 @@ public class OrderServiceImpl implements OrderSerivce {
     @Autowired
     CrdRecordMapper crdRecordMapper;
     public Response insertTmpOrder(TmpOrder order) {
+        System.out.println(order.getUsrId());
         Response response = new Response();
         try {
-            if (userMapper.getUserById(order.getId()) == null) {
+            if (userMapper.getUserById(order.getUsrId()) == null) {
                 response.setInfo(new Info(Constant.USER_NOT_EXIST, "用户不存在"));
                 return response;
             }
@@ -48,6 +50,7 @@ public class OrderServiceImpl implements OrderSerivce {
             tmpMapper.insert(order);
             response.setInfo(new Info(Constant.TMPORDER_INSERT_SUCCESS, "创建临时订单成功"));
 
+
         } catch (Exception e) {
             e.printStackTrace();
             response.setInfo(new Info(Constant.TMPORDER_INSERT_ERROR, "创建临时订单异常，请稍后重试"));
@@ -55,14 +58,16 @@ public class OrderServiceImpl implements OrderSerivce {
         return response;
     }
 
-    public Response updateTmpOrder(TmpOrder order) {
+    public Response updateTmpOrder(int id,int progress) {
         Response response = new Response();
         try {
-            if (tmpMapper.get(order.getProId()) == null) {
+            TmpOrder tmp =tmpMapper.get(id);
+            if ( tmp == null) {
                 response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
                 return response;
             }
-            tmpMapper.update(order);
+            tmp.setProgress(progress);
+            tmpMapper.update(tmp);
             response.setInfo(new Info(Constant.TMPORDER_UPDATE_SUCCESS, "更新临时订单成功"));
 
         } catch (Exception e) {
@@ -71,6 +76,24 @@ public class OrderServiceImpl implements OrderSerivce {
         }
 
         return response;
+    }
+    public Response setPayed(int ordId){
+        Response response = new Response();
+        try {
+            TmpOrder tmp =tmpMapper.get(ordId);
+            if ( tmp == null) {
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
+                return response;
+            }
+            tmp.setPayed(true);
+            tmpMapper.update(tmp);
+            response.setInfo(new Info(Constant.TMPORDER_UPDATE_SUCCESS, "更新临时订单成功"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setInfo(new Info(Constant.TMPORDER_UPDATE_ERROR, "更新临时订单异常，请稍后重试"));
+        }
+        return  response;
     }
 
     public Response deleteTmpOrder(int id) {
@@ -165,6 +188,28 @@ public class OrderServiceImpl implements OrderSerivce {
 
         return response;
     }
+
+    public Response updateVldOrder(int ordId, int hasPay) {
+        Response response = new Response();
+        try {
+            VldOrder tmp =vldMapper.getOrder(ordId);
+            if ( tmp == null) {
+                response.setInfo(new Info(Constant.ORDER_NOT_EXIST, "没有查到相关订单"));
+                return response;
+            }
+            tmp.setHasPay(hasPay);
+            vldMapper.update(tmp);
+            response.setInfo(new Info(Constant.TMPORDER_UPDATE_SUCCESS, "更新临时订单成功"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setInfo(new Info(Constant.TMPORDER_UPDATE_ERROR, "更新临时订单异常，请稍后重试"));
+        }
+
+        return response;
+    }
+
+
     //TODO 完善剩余order的业务逻辑
     public Response getVldorder(int ordId) {
         Response response = new Response();

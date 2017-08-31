@@ -6,7 +6,7 @@ import dto.response.Response;
 public interface OrderSerivce {
     Response insertTmpOrder(TmpOrder order);
 
-    Response updateTmpOrder(TmpOrder order);
+    Response updateTmpOrder(int id, int progress);
 
     Response deleteTmpOrder(int ordId);
 
@@ -24,7 +24,9 @@ public interface OrderSerivce {
 
     Response getAllVldOrder();
 
+    Response setPayed(int ordId);
 
+    Response updateVldOrder(int ordId, int hasPay);
 
     Response getUserOrder(int usrId);
 
