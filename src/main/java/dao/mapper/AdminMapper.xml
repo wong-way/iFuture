@@ -24,5 +24,8 @@
     <select id="getAdminByName" parameterType="String" resultType="Admin">
         select * from ifuture.admin where name = #{name}
     </select>
+    <select id="getAdminByToken" parameterType="String" resultType="Admin">
+        select * from ifuture.admin where token = #{token}
+    </select>
 
 </mapper>

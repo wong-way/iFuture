@@ -67,4 +67,9 @@ public class Constant {
 
     public final static int ORDER_NOT_EXIST=-1;
 
+    //token
+   public final static int TOKEN_NOT_EXIST=-1;
+   public final static int TOKEN_NOT_MATCHED=1;
+   public final static int TOKEN_EXPIRED_ERROR=2;
+
 }

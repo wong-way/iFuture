@@ -28,6 +28,9 @@
     <select id="getUserByName" resultType="User" parameterType="String">
         select * from ifuture.user where name =#{name}
     </select>
+    <select id="getUserByToken" resultType="User" parameterType="String">
+        select * from ifuture.user where token =#{token}
+    </select>
 
 
 </mapper>

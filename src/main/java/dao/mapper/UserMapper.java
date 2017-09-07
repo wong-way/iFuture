@@ -23,4 +23,6 @@ public interface UserMapper {
 
     User getUserByName(String name);
 
+    User getUserByToken(String token);
+
 }

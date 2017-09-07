@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by HWAY on 2017/7/19.
  */
 @RestController
-@RequestMapping(value = "/Hello")
+@RequestMapping(value = "/userApi")
 public class Hello {
     @Autowired
     private UserService service;
@@ -35,6 +35,7 @@ public class Hello {
     @ResponseBody
     @RequestMapping(value = "/json", method = RequestMethod.GET)
     public Map<String, String> json() {
+        System.out.println("this is a json ");
         Map<String, String> name = new HashMap<String, String>();
         name.put("llx", "2015141463001");
         name.put("jjh", "2015141463002");

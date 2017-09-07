@@ -14,5 +14,17 @@
     <context:component-scan base-package="service"/>
 
     <mvc:default-servlet-handler/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/userApi/**"/>
+            <bean class="intercepter.UserIntercepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/adminApi/**"/>
+            <bean class="intercepter.AdminIntercepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

@@ -26,7 +26,6 @@ public class OrderController {
 
     @ResponseBody
     @RequestMapping(value = "order/addTmp",method = RequestMethod.POST)
-
     public Response insertTmpOrder(int usrId, int proId,
                                    int progress, String dataUrl) {
         Response response;
@@ -71,6 +70,45 @@ public class OrderController {
     @RequestMapping(value = "admin/order/updateVld",method = RequestMethod.POST)
     public Response updateVldProgress(int ordId, int hasPay) {
         Response response = orderSerivce.updateVldOrder(ordId, hasPay);
+        return response;
+    }
+    @ResponseBody
+    @RequestMapping(value = "admin/order/deleteVld",method = RequestMethod.POST)
+    public Response deleteVldOrder(int ordId){
+        Response response = orderSerivce.deleteVldOrder(ordId);
+        return  response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "admin/order/getAllTmp", method = RequestMethod.GET)
+    public Response getAllTmpOrder() {
+        Response response = orderSerivce.getAllTmporder();
+        return response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "admin/order/getAllVld", method = RequestMethod.GET)
+    public Response getAllVldOrder() {
+        Response response = orderSerivce.getAllVldOrder();
+        return response;
+    }
+    @ResponseBody
+    @RequestMapping(value = "admin/order/getTmp",method = RequestMethod.POST)
+    public Response getTmp(int ordId){
+        Response response = orderSerivce.getTmporder(ordId);
+        return  response;
+    }
+    @ResponseBody
+    @RequestMapping(value = "admin/order/getVld",method = RequestMethod.POST)
+    public Response getVld(int ordId){
+        Response response = orderSerivce.getVldorder(ordId);
+        return  response;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "order/getUser", method = RequestMethod.POST)
+    public Response getUsrOrder(int usrId) {
+        Response response = orderSerivce.getUserOrder(usrId);
         return response;
     }
 }

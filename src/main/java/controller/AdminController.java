@@ -19,6 +19,16 @@ public class AdminController {
     @Autowired
     private AdminService service;
 
+    /**
+     *
+     * @param name 姓名
+     * @param phone 电话
+     * @param gender 性别
+     * @param type 管理类型
+     * @param mail 管理员邮箱
+     * @param psw 密码
+     * @return response
+     */
     @RequestMapping(value = "admin/register", method = RequestMethod.POST)
     public Response register(@RequestParam String name, @RequestParam String phone,
                              @RequestParam Integer gender, @RequestParam int type,
@@ -34,6 +44,13 @@ public class AdminController {
         response = service.register(admin);
         return response;
     }
+
+    /**
+     *
+     * @param name 管理员账号
+     * @param psw 密码
+     * @return response
+     */
     @RequestMapping(value = "admin/login", method = RequestMethod.POST)
     public Response login(@RequestParam String name, @RequestParam String psw) {
         Response response = service.login(name, psw);
