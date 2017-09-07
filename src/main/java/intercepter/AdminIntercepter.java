@@ -1,8 +1,8 @@
 package intercepter;
 
+
 import com.google.gson.Gson;
 import dao.entity.Admin;
-import dao.entity.User;
 import dao.mapper.AdminMapper;
 import dto.response.Info;
 import dto.response.Response;

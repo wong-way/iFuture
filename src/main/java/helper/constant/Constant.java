@@ -3,6 +3,7 @@ package helper.constant;
 /**
  * Created by DELL on 2017-08-15.
  */
+
 public class Constant {
    //登录常量
    public final static int WRONG_PASSWORD=1;

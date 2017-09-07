@@ -18,11 +18,22 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ProductController {
     @Autowired
     ProductService service;
+
+    /**
+     *
+     * @return response
+     */
     @RequestMapping(value = "product/getAll", method = RequestMethod.GET)
     public Response getAllProduct(){
         Response response = service.getAllProduct();
         return response;
     }
+
+    /**
+     *
+     * @param id 产品id
+     * @return response
+     */
     @RequestMapping(value = "product/get", method = RequestMethod.GET)
     public Response getProductById(int id) {
         Response response = service.getProductById(id);

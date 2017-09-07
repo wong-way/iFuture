@@ -20,24 +20,22 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     @Autowired
     UserMapper mapper;
-    public void insertUser(User user) {
 
-    }
-
-    public void updateUser(User user) {
-
-    }
-
-    public User getUserById(int usrId) {
-        return null;
-    }
-
+    /**
+     *
+     * @return
+     */
     public List<User> getAllUser() {
         List<User> usrList = mapper.getAllUser();
         return usrList;
 
     }
 
+    /**
+     *
+     * @param name 用户名
+     * @return response
+     */
     public User getUserByName(String name) {
 
         User user = null;
@@ -50,6 +48,12 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
+    /**
+     *
+     * @param name 用户名
+     * @param psw 密码
+     * @return response
+     */
     public Response login(String name, String psw) {
         User user = null;
         Response response = new Response();
@@ -81,7 +85,11 @@ public class UserServiceImpl implements UserService{
         return  response;
     }
 
-
+    /**
+     *
+     * @param user 用户信息
+     * @return response
+     */
     public Response register(User user) {
         Response response = new Response();
         if (mapper.getUserByName(user.getName()) != null) {
@@ -109,5 +117,4 @@ public class UserServiceImpl implements UserService{
         response.setData(userInfo);
         return response;
     }
-    //TODO 其他业务逻辑
 }

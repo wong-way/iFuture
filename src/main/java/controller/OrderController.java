@@ -24,8 +24,16 @@ public class OrderController {
     @Autowired
     OrderSerivce orderSerivce;
 
+    /**
+     *
+     * @param usrId 用户的id
+     * @param proId 产品的id
+     * @param progress 进度
+     * @param dataUrl 资料的地址
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "order/addTmp",method = RequestMethod.POST)
+    @RequestMapping(value = "userApi/order/addTmp",method = RequestMethod.POST)
     public Response insertTmpOrder(int usrId, int proId,
                                    int progress, String dataUrl) {
         Response response;
@@ -35,30 +43,55 @@ public class OrderController {
         return response;
     }
 
+    /**
+     *
+     * @param ordId 订单id
+     * @param progress 进度
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/updateTmp",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/updateTmp",method = RequestMethod.POST)
     public Response updateTmpProgress(int ordId, int progress) {
         Response response = orderSerivce.updateTmpOrder(ordId, progress);
         return response;
     }
 
+    /**
+     *
+     * @param ordId 订单id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "order/setPayed",method = RequestMethod.POST)
+    @RequestMapping(value = "userApi/order/setPayed",method = RequestMethod.POST)
     public Response setPayed(int ordId) {
 
         Response response = orderSerivce.setPayed(ordId);
         return response;
     }
+
+    /**
+     *
+     * @param ordId 订单id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/deleteTmp",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/deleteTmp",method = RequestMethod.POST)
     public Response deleteTmpOrder(int ordId) {
 
         Response response = orderSerivce.deleteTmpOrder(ordId);
         return response;
     }
 
+    /**
+     *
+     * @param ordId 订单id
+     * @param toPay 赔金
+     * @param hasPay 已经赔付的金额
+     * @param usrId 用户id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/addVld",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/addVld",method = RequestMethod.POST)
     public Response insertVldOrder(int ordId,int toPay,int hasPay,int usrId){
         Date date = DateHelper.getOutDate(0);
         VldOrder order = new VldOrder(ordId, toPay, hasPay, usrId, date);
@@ -66,47 +99,85 @@ public class OrderController {
         return response;
 
     }
+
+    /**
+     *
+     * @param ordId 订单id
+     * @param hasPay 已经支付的钱
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/updateVld",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/updateVld",method = RequestMethod.POST)
     public Response updateVldProgress(int ordId, int hasPay) {
         Response response = orderSerivce.updateVldOrder(ordId, hasPay);
         return response;
     }
+
+    /**
+     *
+     * @param ordId 订单id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/deleteVld",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/deleteVld",method = RequestMethod.POST)
     public Response deleteVldOrder(int ordId){
         Response response = orderSerivce.deleteVldOrder(ordId);
         return  response;
     }
 
+    /**
+     *
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/getAllTmp", method = RequestMethod.GET)
+    @RequestMapping(value = "adminApi/order/getAllTmp", method = RequestMethod.GET)
     public Response getAllTmpOrder() {
         Response response = orderSerivce.getAllTmporder();
         return response;
     }
 
+    /**
+     *
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/getAllVld", method = RequestMethod.GET)
+    @RequestMapping(value = "adminApi/order/getAllVld", method = RequestMethod.GET)
     public Response getAllVldOrder() {
         Response response = orderSerivce.getAllVldOrder();
         return response;
     }
+
+    /**
+     *
+     * @param ordId 订单id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/getTmp",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/getTmp",method = RequestMethod.POST)
     public Response getTmp(int ordId){
         Response response = orderSerivce.getTmporder(ordId);
         return  response;
     }
+
+    /**
+     *
+     * @param ordId 订单id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "admin/order/getVld",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/getVld",method = RequestMethod.POST)
     public Response getVld(int ordId){
         Response response = orderSerivce.getVldorder(ordId);
         return  response;
     }
 
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
     @ResponseBody
-    @RequestMapping(value = "order/getUser", method = RequestMethod.POST)
+    @RequestMapping(value = "userApi/order/getUser", method = RequestMethod.POST)
     public Response getUsrOrder(int usrId) {
         Response response = orderSerivce.getUserOrder(usrId);
         return response;

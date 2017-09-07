@@ -16,13 +16,31 @@ import service.SchRollService;
 public class SchRollController {
     @Autowired
     SchRollService service;
-    @RequestMapping(value = "roll/get", method = RequestMethod.POST)
+
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
+    @RequestMapping(value = "userApi/roll/get", method = RequestMethod.POST)
     public Response getSchRollById(int usrId) {
         Response response = service.getUserSchRoll(usrId);
         return response;
     }
 
-    @RequestMapping(value = "roll/insert", method = RequestMethod.POST)
+    /**
+     *
+     * @param usrId 用户id
+     * @param school 学校
+     * @param college 学院
+     * @param major 专业
+     * @param aim 目标
+     * @param mail 邮箱
+     * @param stuNo 学生证号
+     * @param idNo 身份证号
+     * @return response
+     */
+    @RequestMapping(value = "userApi/roll/insert", method = RequestMethod.POST)
     public Response insertRoll(int usrId, String school, String college, String major,
                                    String aim, String mail, String stuNo, String idNo) {
 
@@ -30,7 +48,20 @@ public class SchRollController {
         Response response = service.insert(roll);
         return response;
     }
-    @RequestMapping(value = "roll/update", method = RequestMethod.POST)
+
+    /**
+     *
+     * @param usrId 用户id
+     * @param school 学校
+     * @param college 学院
+     * @param major 专业
+     * @param aim 目标
+     * @param mail 邮箱
+     * @param stuNo 学生证号
+     * @param idNo 身份证号
+     * @return response
+     */
+    @RequestMapping(value = "userApi/roll/update", method = RequestMethod.POST)
     public Response updateRoll(int usrId, String school, String college, String major,
                                    String aim, String mail, String stuNo, String idNo) {
 
@@ -38,7 +69,13 @@ public class SchRollController {
         Response response = service.update(roll);
         return response;
     }
-    @RequestMapping(value = "roll/delete", method = RequestMethod.POST)
+
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
+    @RequestMapping(value = "userApi/roll/delete", method = RequestMethod.POST)
     public Response deleteRoll(int usrId) {
         Response response = service.delete(usrId);
         return response;

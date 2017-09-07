@@ -18,6 +18,11 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductMapper mapper;
+
+    /**
+     *
+     * @return response
+     */
     public Response getAllProduct() {
         Response response = new Response();
         try {
@@ -30,6 +35,12 @@ public class ProductServiceImpl implements ProductService {
         }
         return response;
     }
+
+    /**
+     *
+     * @param id 产品id
+     * @return response
+     */
 
     public Response getProductById(int id) {
         Response response =new Response();

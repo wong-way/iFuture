@@ -22,7 +22,7 @@ public class CrdRecordController {
      * @param record 用户的信用分数记录
      * @return response
      */
-    @RequestMapping(value = "record/add",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/record/add",method = RequestMethod.POST)
     public Response addRecord(int usrId, String record) {
         Response response = service.addRecord(usrId, record);
         return response;
@@ -33,7 +33,7 @@ public class CrdRecordController {
      * @param usrId 用户id
      * @return response
      */
-    @RequestMapping(value = "record/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/record/delete", method = RequestMethod.POST)
     public Response delRecord(int usrId) {
         Response response = service.delUsrRecord(usrId);
         return response;
@@ -44,7 +44,7 @@ public class CrdRecordController {
      * @param usrId 用户id
      * @return response
      */
-    @RequestMapping(value = "record/get", method = RequestMethod.POST)
+    @RequestMapping(value = "userApi/record/get", method = RequestMethod.POST)
     public Response getRecord(int usrId) {
         Response response = service.getUsrRecord(usrId);
         return response;

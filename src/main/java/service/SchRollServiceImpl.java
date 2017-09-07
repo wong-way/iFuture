@@ -19,6 +19,12 @@ public class SchRollServiceImpl implements SchRollService {
     SchRollMapper mapper;
     @Autowired
     UserMapper userMapper;
+
+    /**
+     *
+     * @param roll 学籍信息
+     * @return response
+     */
     public Response insert(SchRoll roll) {
         Response response = new Response();
         try {
@@ -37,6 +43,12 @@ public class SchRollServiceImpl implements SchRollService {
         return response;
     }
 
+    /**
+     *
+     * @param roll 学籍信息
+     * @return response
+     */
+
     public Response update(SchRoll roll) {
         Response response = new Response();
         try {
@@ -54,6 +66,12 @@ public class SchRollServiceImpl implements SchRollService {
         return response;
     }
 
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
+
     public Response delete(int usrId) {
         Response response = new Response();
         try {
@@ -69,6 +87,12 @@ public class SchRollServiceImpl implements SchRollService {
         }
         return response;
     }
+
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
 
     public Response getUserSchRoll(int usrId) {
         Response response = new Response();

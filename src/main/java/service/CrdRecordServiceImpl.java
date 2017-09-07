@@ -20,6 +20,12 @@ public class CrdRecordServiceImpl implements CrdRecordService {
     @Autowired
     UserMapper userMapper;
 
+    /**
+     *
+     * @param usrId 用户id
+     * @param record 信用记录
+     * @return response
+     */
     public Response addRecord(int usrId, String record) {
         Response response = new Response();
         try {
@@ -43,6 +49,11 @@ public class CrdRecordServiceImpl implements CrdRecordService {
         return response;
     }
 
+    /**
+     *
+     * @param usrId
+     * @return response
+     */
     public Response delUsrRecord(int usrId) {
         Response response = new Response();
         try {
@@ -63,6 +74,12 @@ public class CrdRecordServiceImpl implements CrdRecordService {
         }
         return response;
     }
+
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
 
     public Response getUsrRecord(int usrId) {
         Response response = new Response();

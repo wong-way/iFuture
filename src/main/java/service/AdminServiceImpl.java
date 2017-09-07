@@ -19,6 +19,12 @@ import org.springframework.stereotype.Service;
 public class AdminServiceImpl implements AdminService{
     @Autowired
     AdminMapper  mapper;
+
+    /**
+     *
+     * @param id 管理员id
+     * @return response
+     */
     public Admin getAdminById(int id) {
         Admin admin = new Admin();
         try {
@@ -29,6 +35,11 @@ public class AdminServiceImpl implements AdminService{
         return admin;
     }
 
+    /**
+     *
+     * @param name 管理员名字
+     * @return response
+     */
     public Admin getAdminByName(String name) {
         Admin admin = new Admin();
         try {
@@ -39,6 +50,12 @@ public class AdminServiceImpl implements AdminService{
         return admin;
     }
 
+    /**
+     *
+     * @param name 管理员名字
+     * @param psw 密码
+     * @return response
+     */
     public Response login(String name, String psw) {
         Admin admin = null;
         Response response = new Response();
@@ -70,6 +87,11 @@ public class AdminServiceImpl implements AdminService{
         return  response;
     }
 
+    /**
+     *
+     * @param admin 管理员信息
+     * @return response
+     */
     public Response register(Admin admin) {
         Response response = new Response();
         if (mapper.getAdminByName(admin.getName()) != null) {
