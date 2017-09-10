@@ -15,13 +15,13 @@ import java.util.Map;
  * Created by HWAY on 2017/7/19.
  */
 @RestController
-@RequestMapping(value = "/userApi")
+@RequestMapping(value = "/hello")
 public class Hello {
     @Autowired
     private UserService service;
 
     @ResponseBody
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "userApi/test", method = RequestMethod.GET)
     public String test() {
         return "hello llx this is a test";
     }

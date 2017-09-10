@@ -67,6 +67,7 @@ public class AdminServiceImpl implements AdminService{
         if (admin == null) {
             Info info = new Info(Constant.ADMIN_NOT_EXIST, "管理员不存在，请注册");
             response.setInfo(info);
+            return response;
         }
         if (admin.getPsw().equals(psw)) {
             String tokenStr =new Token().getTokenStr();

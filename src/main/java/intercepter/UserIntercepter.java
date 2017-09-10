@@ -59,6 +59,7 @@ public class UserIntercepter implements HandlerInterceptor {
             out.print(new Gson().toJson(res));
             return false;
         }
+        httpServletRequest.setAttribute("usrId", user.getId());
         return true;
     }
 

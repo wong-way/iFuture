@@ -33,7 +33,7 @@ public class OrderController {
      * @return response
      */
     @ResponseBody
-    @RequestMapping(value = "userApi/order/addTmp",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/addTmp",method = RequestMethod.POST)
     public Response insertTmpOrder(int usrId, int proId,
                                    int progress, String dataUrl) {
         Response response;
@@ -62,7 +62,7 @@ public class OrderController {
      * @return response
      */
     @ResponseBody
-    @RequestMapping(value = "userApi/order/setPayed",method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/order/setPayed",method = RequestMethod.POST)
     public Response setPayed(int ordId) {
 
         Response response = orderSerivce.setPayed(ordId);
@@ -177,7 +177,7 @@ public class OrderController {
      * @return response
      */
     @ResponseBody
-    @RequestMapping(value = "userApi/order/getUser", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/getUser", method = RequestMethod.POST)
     public Response getUsrOrder(int usrId) {
         Response response = orderSerivce.getUserOrder(usrId);
         return response;

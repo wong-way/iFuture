@@ -73,4 +73,12 @@ public class Constant {
    public final static int TOKEN_NOT_MATCHED=1;
    public final static int TOKEN_EXPIRED_ERROR=2;
 
+   //file
+   public final static int FILE_UP_ERROR=2;
+   public final static int FILE_TYPE_ERROR=1;
+   public final static int FILE_UP_SUCCESS=0;
+   public final static int FILE_DOWN_ERROR=2;
+   public final static int FILE_NOT_FOUND=1;
+   public final static int FILE_DOWN_SUCCESS=0;
+
 }

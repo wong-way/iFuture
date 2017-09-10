@@ -44,7 +44,7 @@ public class CrdRecordController {
      * @param usrId 用户id
      * @return response
      */
-    @RequestMapping(value = "userApi/record/get", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/record/get", method = RequestMethod.POST)
     public Response getRecord(int usrId) {
         Response response = service.getUsrRecord(usrId);
         return response;

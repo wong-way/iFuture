@@ -65,6 +65,7 @@ public class UserServiceImpl implements UserService{
         if (user == null) {
             Info info = new Info(Constant.USER_NOT_EXIST, "用户不存在，请注册");
             response.setInfo(info);
+            return response;
         }
         if (user.getPsw().equals(psw)) {
             String tokenStr =new Token().getTokenStr();

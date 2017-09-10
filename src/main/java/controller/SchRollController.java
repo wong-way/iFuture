@@ -22,7 +22,7 @@ public class SchRollController {
      * @param usrId 用户id
      * @return response
      */
-    @RequestMapping(value = "userApi/roll/get", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/roll/get", method = RequestMethod.POST)
     public Response getSchRollById(int usrId) {
         Response response = service.getUserSchRoll(usrId);
         return response;
@@ -40,7 +40,7 @@ public class SchRollController {
      * @param idNo 身份证号
      * @return response
      */
-    @RequestMapping(value = "userApi/roll/insert", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/roll/insert", method = RequestMethod.POST)
     public Response insertRoll(int usrId, String school, String college, String major,
                                    String aim, String mail, String stuNo, String idNo) {
 
@@ -61,7 +61,7 @@ public class SchRollController {
      * @param idNo 身份证号
      * @return response
      */
-    @RequestMapping(value = "userApi/roll/update", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/roll/update", method = RequestMethod.POST)
     public Response updateRoll(int usrId, String school, String college, String major,
                                    String aim, String mail, String stuNo, String idNo) {
 
@@ -75,7 +75,7 @@ public class SchRollController {
      * @param usrId 用户id
      * @return response
      */
-    @RequestMapping(value = "userApi/roll/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "adminApi/roll/delete", method = RequestMethod.POST)
     public Response deleteRoll(int usrId) {
         Response response = service.delete(usrId);
         return response;

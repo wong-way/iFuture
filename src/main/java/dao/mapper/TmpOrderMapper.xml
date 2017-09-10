@@ -24,6 +24,9 @@
     <select id="getAllOrder" resultType="TmpOrder">
         select *from ifuture.tmp_order
     </select>
+    <select id="get" parameterType="int" resultType="TmpOrder">
+        select *from ifuture.tmp_order where id=#{id}
+    </select>
 
 
 </mapper>
