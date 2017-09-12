@@ -3,6 +3,8 @@ package dao.mapper;
 import dao.entity.SchRoll;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by DELL on 2017-08-12.
  */
@@ -15,4 +17,6 @@ public interface SchRollMapper {
     void delete(int usrId);
 
     SchRoll getRollById(int usrId);
+
+    List<SchRoll> getUnpassSchRoll();
 }

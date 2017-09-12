@@ -37,6 +37,11 @@ public class Constant {
    public final static int ROLL_GET_ERROR=1;
 
    public final static int ROOL_NOT_EXIST=-1;
+   public final static int ROLL_NOT_PASS=1;
+
+   public final static int UNPASSROLL_NOT_EXSIT=-1;
+   public final static int UNPASSROLL_QUERY_ERROR=1;
+   public final static int UNPASSROLL_QUERY_SUCCESS=0;
 
    //信用分数常量
    public final static int RECORD_INSERT_SUCCESS=0;
@@ -56,6 +61,10 @@ public class Constant {
    public final static int TMPORDER_GET_SUCCESS=0;
    public final static int TMPORDER_GET_ERROR=1;
 
+   public final static int UNPAYTMPORDER_NOT_EXSIT=-1;
+   public final static int UNPAYTMPORDER_QUERY_ERROR=1;
+   public final static int UNPAYTMPORDER_QUERY_SUCCESS=0;
+
    public final static int VLDORDER_INSERT_SUCCESS=0;
    public final static int VLDORDER_INSERT_ERROR=1;
    public final static int VLDORDER_DELETE_SUCCESS=0;
@@ -66,9 +75,9 @@ public class Constant {
    public final static int VLDORDER_GET_SUCCESS=0;
    public final static int VLDORDER_GET_ERROR=1;
 
-    public final static int ORDER_NOT_EXIST=-1;
+   public final static int ORDER_NOT_EXIST=-1;
 
-    //token
+   //token
    public final static int TOKEN_NOT_EXIST=-1;
    public final static int TOKEN_NOT_MATCHED=1;
    public final static int TOKEN_EXPIRED_ERROR=2;

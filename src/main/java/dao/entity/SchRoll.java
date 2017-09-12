@@ -13,11 +13,11 @@ public class SchRoll {
     private String mail;
     private String stuNo;
     private String idNo;
-
+    private boolean isPass;
     public SchRoll() {
     }
 
-    public SchRoll(int usrId, String school, String college, String major, String aim, String mail, String stuNo, String idNo) {
+    public SchRoll(int usrId, String school, String college, String major, String aim, String mail, String stuNo, String idNo, boolean isPass) {
         this.usrId = usrId;
         this.school = school;
         this.college = college;
@@ -26,6 +26,7 @@ public class SchRoll {
         this.mail = mail;
         this.stuNo = stuNo;
         this.idNo = idNo;
+        this.isPass=isPass;
     }
 
     public int getUsrId() {
@@ -91,4 +92,8 @@ public class SchRoll {
     public void setIdNo(String idNo) {
         this.idNo = idNo;
     }
+
+    public boolean getPass() { return isPass; }
+
+    public void setPass(boolean pass) { isPass = pass; }
 }

@@ -1,5 +1,6 @@
 package service;
 
+import com.sun.org.apache.regexp.internal.RE;
 import dao.entity.SchRoll;
 import dto.response.Response;
 
@@ -14,4 +15,8 @@ public interface SchRollService {
     Response delete(int usrId);
 
     Response getUserSchRoll(int usrId);
+
+    Response setPass(int usrId);
+
+    Response getUnpassSchRoll();
 }

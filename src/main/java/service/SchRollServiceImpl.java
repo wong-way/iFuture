@@ -9,6 +9,8 @@ import helper.constant.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by DELL on 2017-08-21.
  */
@@ -19,6 +21,8 @@ public class SchRollServiceImpl implements SchRollService {
     SchRollMapper mapper;
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    SchRollMapper schRollMapper;
 
     /**
      *
@@ -111,4 +115,54 @@ public class SchRollServiceImpl implements SchRollService {
         }
         return response;
     }
+
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
+
+    public Response setPass(int usrId) {
+        Response response = new Response();
+        try {
+            SchRoll schRoll = schRollMapper.getRollById(usrId);
+            if (schRoll == null) {
+                response.setInfo(new Info(Constant.ROOL_NOT_EXIST, "用户资料未完善"));
+                return response;
+            }
+            schRoll.setPass(true);
+            schRollMapper.update(schRoll);
+            response.setInfo(new Info(Constant.ROLL_UPDATE_SUCCESS, "学历修改成功"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setInfo(new Info(Constant.ROLL_UPDATE_ERROR, "学历修改异常，请稍后重试"));
+        }
+        return response;
+    }
+
+    /**
+     *
+     * @return response
+     */
+
+    public Response getUnpassSchRoll() {
+        Response response=new Response();
+        try {
+            List<SchRoll> schRolls = schRollMapper.getUnpassSchRoll();
+            if(schRolls.size()==0){
+                response.setInfo(new Info(Constant.UNPASSROLL_NOT_EXSIT,"不存在未通过学籍"));
+            }
+            else {
+                response.setData(schRolls);
+                response.setInfo(new Info(Constant.UNPAYTMPORDER_QUERY_SUCCESS,"学籍查找成功"));
+            }
+        }catch (Exception e){
+            response.setInfo(new Info(Constant.UNPASSROLL_QUERY_ERROR,"学籍查找失败"));
+            e.printStackTrace();
+        }
+
+        return response;
+    }
+
 }

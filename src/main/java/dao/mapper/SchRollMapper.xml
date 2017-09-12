@@ -5,12 +5,12 @@
 
 <mapper  namespace="dao.mapper.SchRollMapper">
     <insert id="insert" parameterType="SchRoll" useGeneratedKeys="true" keyColumn="id">
-        insert into ifuture.sch_roll(usr_id, school, college, major, aim, mail, stu_no, id_no)
-        values (#{usrId},#{school},#{college},#{major},#{aim},#{mail},#{stuNo},#{idNo});
+        insert into ifuture.sch_roll(usr_id, school, college, major, aim, mail, stu_no, id_no,isPass)
+        values (#{usrId},#{school},#{college},#{major},#{aim},#{mail},#{stuNo},#{idNo},FALSE );
     </insert>
     <update id="update" parameterType="SchRoll">
         UPDATE ifuture.sch_roll
-        SET school=#{school},college=#{college},major=#{major},aim=#{aim},mail=#{mail},stu_no=#{stuNo},id_no=#{idNo}
+        SET school=#{school},college=#{college},major=#{major},aim=#{aim},mail=#{mail},stu_no=#{stuNo},id_no=#{idNo},isPass=#{isPass}
         WHERE usr_id = #{usrId};
     </update>
 
@@ -19,5 +19,8 @@
     </delete>
     <select id="getRollById" parameterType="int" resultType="SchRoll">
         select * from ifuture.sch_roll where usr_id =#{usrId}
+    </select>
+    <select id="getUnpassSchRoll" resultType="SchRoll">
+        select * from ifuture.sch_roll where isPass=0;
     </select>
 </mapper>

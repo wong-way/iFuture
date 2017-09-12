@@ -42,9 +42,9 @@ public class SchRollController {
      */
     @RequestMapping(value = "adminApi/roll/insert", method = RequestMethod.POST)
     public Response insertRoll(int usrId, String school, String college, String major,
-                                   String aim, String mail, String stuNo, String idNo) {
+                               String aim, String mail, String stuNo, String idNo) {
 
-        SchRoll roll = new SchRoll(usrId, school, college, major, aim, mail, stuNo, idNo);
+        SchRoll roll = new SchRoll(usrId, school, college, major, aim, mail, stuNo, idNo,false);
         Response response = service.insert(roll);
         return response;
     }
@@ -63,9 +63,9 @@ public class SchRollController {
      */
     @RequestMapping(value = "adminApi/roll/update", method = RequestMethod.POST)
     public Response updateRoll(int usrId, String school, String college, String major,
-                                   String aim, String mail, String stuNo, String idNo) {
+                               String aim, String mail, String stuNo, String idNo) {
 
-        SchRoll roll = new SchRoll(usrId, school, college, major, aim, mail, stuNo, idNo);
+        SchRoll roll = new SchRoll(usrId, school, college, major, aim, mail, stuNo, idNo,false);
         Response response = service.update(roll);
         return response;
     }
@@ -78,6 +78,27 @@ public class SchRollController {
     @RequestMapping(value = "adminApi/roll/delete", method = RequestMethod.POST)
     public Response deleteRoll(int usrId) {
         Response response = service.delete(usrId);
+        return response;
+    }
+
+    /**
+     *
+     * @param usrId 用户id
+     * @return response
+     */
+    @RequestMapping(value = "adminApi/roll/setPass",method = RequestMethod.POST)
+    public Response setRollPass(int usrId){
+        Response response = service.setPass(usrId);
+        return response;
+    }
+
+    /**
+     *
+     * @return response
+     */
+    @RequestMapping(value = "adminApi/roll/getUnpass",method = RequestMethod.POST)
+    public Response getUnpassRoll(){
+        Response response = service.getUnpassSchRoll();
         return response;
     }
 }
